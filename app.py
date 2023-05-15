@@ -216,7 +216,9 @@ def prediction():
 
     past_100_days = data_training.tail(100)
 
-    final_df = past_100_days.append(data_testing, ignore_index=True)
+    print(type(past_100_days))
+
+    final_df = past_100_days.concat(data_testing, ignore_index=True)
 
     input_data = scaler.fit_transform(final_df)
 
@@ -279,6 +281,7 @@ def prediction():
 
 if st.button("Predict Stock"):
     prediction()
+
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
