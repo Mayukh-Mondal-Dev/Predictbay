@@ -44,14 +44,17 @@ from math import floor
 import threading
 from queue import Queue
 from turbo_flask import Turbo
+from flask_sock import Sock
 
 app = Flask(__name__)
 
 turbo = Turbo(app)
-
+sock = Sock(app)
 
 class InvalidTickerError(Exception):
     pass
+
+
 
 
 def get_data(ticker, period):
